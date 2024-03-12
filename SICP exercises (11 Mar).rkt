@@ -62,6 +62,8 @@ a)
 
 ;Exercise 1.5
 
-; ANS : In applicative order, arguments are evaluated before procedure is applied, hence p would evaluate to p repeatedly - and would not terminate
+; ANS :
+;In applicative order, arguments are evaluated before procedure is applied, hence p would evaluate to p repeatedly - and would not terminate
+;In normal order, procedure is applied first then arguments are evaluated, hence, output would be 0.
 
 
