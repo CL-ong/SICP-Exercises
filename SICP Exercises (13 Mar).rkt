@@ -41,12 +41,36 @@
 ;Ex 1.13
 ;proof by induction
 
-;Ex 1.14 - KIV
-; (cc n 1) generates (* 2 n) steps, with 
+;Ex 1.14 
+; (cc n 1) generates (* 2 n) steps, thus number of steps for (cc 11 1) needs 22 steps.
+; Hence, order of growth for both number of steps & space is O(n).
         
 ;Ex 1.15
-;a. 5 times
-;b. KIV
+(define (cube x) (* x x x))
+(define (p x) (- (* 3 x) (* 4 (cube x))))
+(define (sine angle)
+  (if (not (> (abs angle) 0.1))
+      angle
+      (p (sine (/ angle 3.0)))))
+;a is ran 5 times
+;b.
+
+(sine 12.15)
+(sine (/ 12.15 3.0))
+(sine 4.05)
+(sine (/ 4.05 3.0))
+(sine 1.35)
+(sine (/ 1.35 3.0))
+(sine 0.45)
+(sine (/ 0.45 3.0))
+(sine 0.15)
+(sine (/ 0.15 3.0))
+(sine 0.05)
+
+      
+
+;For order of growth of space, at each point in the process, we just need to keep track of the parent node of the current node, hence, O(n) as space grows linearly.
+;for order of growth of steps, KIV
 
 
 
