@@ -1,5 +1,5 @@
 #lang scheme
-;Exercise 1.16
+;Ex 1.16
 
 (define (square z) (* z z))
 
@@ -23,12 +23,23 @@
   (cond ((= b 0) 0)
         ((= b even) (* (double a) (fast-mul a (halve b))))
         ((= b odd) (+ b (fast-mul a (- b 1))))))
-;translate above proc. into iterative
+
+
+;Ex 1.18
+
+;translate above recursive proc. into iterative
+
+(define (double x) (* x 2))
+(define (halve x) (/ x 2))
 
 (define (fast-mul a b)
   (define (mul-iter result a b)
     (cond ((= b 0) result)
           ((even? b) (mul-iter result (double a) (halve b)))
-          (else (mul-iter (* a b) (- b 1)))))
+          (else (mul-iter (* a b) a (- b 1)))))
   (mul-iter 0 a b))
-        
+
+;Ex 1.19
+
+;
+
