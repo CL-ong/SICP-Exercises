@@ -41,5 +41,41 @@
 
 ;Ex 1.19
 
-;
+; a <- a + b
+; b <- a
+
+;Transformed according to
+;p = 0
+;q = 1
+
+;a' = qb + qa + pa
+;b' = pb + qa
+
+;a'' = q (pb + qa) + q (qb + qa + pa) + p (qb + qa + pa) = a (p^2 + 2pq + 2q^2) + b (2pq + q^2) --- (1)
+;b'' = p (pb + qa) + q (qb + qa + pa) = a (2pq + q^2) + b (p^2 + q^2) --- (2)
+
+;a'' = q'b + q'a + p'a --- (3)
+;b'' = p'b + q'a --- (4)
+
+;Compare coefficients of a, b for (1) & (3) and (2) & (4) respetively, 
+;q' = 2pq + q^2 -- compute p′
+;p' = p^2 + q^2 -- compute q′
+
+(define (fib n)
+  (fib-iter 1 0 0 1 n))
+(define (fib-iter a b p q count)
+  (cond ((= count 0) b)
+        ((even? count)
+         (fib-iter a
+                   b
+                   (+ (* p p) (* q q)) ; compute p′
+                   (+ (* 2 p q) (* q q)) ; compute q′
+                   (/ count 2)))
+  (else (fib-iter (+ (* b q) (* a q) (* a p))
+                  (+ (* b p) (* a q))
+                  p
+                  q
+                  (- count 1)))))
+
+
 
