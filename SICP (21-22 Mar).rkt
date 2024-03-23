@@ -25,6 +25,10 @@
   (try-it (+ 1 (random (- n 1)))))
 
 ;solution
+
+(define (square x) (* x x))
+
+
 (define (expmod1 base exp m)
     (define (test x)
         (cond ((or (= x 1) (= x (- m 1))) 1)
@@ -45,3 +49,4 @@
     (cond ((= times 0) true)
           ((miller-rabin-test n) (fast-miller-rabin-prime? n (- times 1)))
           (else false)))
+
